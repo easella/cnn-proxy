@@ -10,7 +10,7 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install -
 RUN git clone --recursive https://github.com/binary-person/cnn-proxy /opt/cnn-proxy
 
 # build womginx, modify nginx.conf, and copy it to /etc/nginx/nginx.conf
-RUN cd /opt/womginx/public_root/index.html&& npm install && npm run build-prod && cd ..\
+RUN cd /opt/cnn-proxy/public_root/index.html&& npm install && npm run build-prod && cd ..\
     && sed -i -e "s/\/home\/binary\/cnn-proxy\/public_root/$(pwd | sed -e 's/\//\\\//g')/g" ../nginx.conf\
     && cp ../nginx.conf /etc/nginx/nginx.conf
 
